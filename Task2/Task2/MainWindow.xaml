@@ -1,0 +1,62 @@
+﻿<Window x:Class="Task2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+        
+     
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="110" Height="30" Name="PathBox">Введите путь</TextBox>
+                <Button Width="50" Height="30" Click="Button_Click1">Импорт</Button>
+            </StackPanel>
+            <ComboBox  x:Name="ExcelList" Margin="0 20 0 0"></ComboBox>
+            <Button Width="70" Height="30" Margin="0 20 0 0" Click="Button_Click3">Отображение</Button>
+        </StackPanel>
+
+
+        <StackPanel VerticalAlignment="Bottom">
+            <TextBlock HorizontalAlignment="Center">Оборотная ведомость по балансовым счетам</TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="65 0 20 0">
+                <Border BorderBrush="black" BorderThickness="1">
+                <TextBlock Width="180">ВХОДЯЩЕЕ САЛЬДО</TextBlock>
+                </Border>
+                <Border BorderBrush="black" BorderThickness="1">
+                    <TextBlock Width="180">ОБОРОТЫ</TextBlock>
+                </Border>
+                <Border BorderBrush="black" BorderThickness="1">
+                    <TextBlock Width="180">ИСХОДЯЩЕЕ САЛЬДО</TextBlock>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+        
+        <DataGrid Grid.Column="0" Grid.Row="1" Margin="20 0 20 20" CanUserResizeColumns="False"  x:Name="balanceGrid" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
+                  RowBackground="LightGray" AlternatingRowBackground="White">
+            <DataGrid.Items>
+            </DataGrid.Items>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Б/Cч" Width="45" Binding="{Binding AccountNumber}"/>
+                <DataGridTextColumn Header="Актив" Width="90" Binding="{Binding IbAssets}" />
+                <DataGridTextColumn Header="Пассив" Width="90" Binding="{Binding IbPassive}" />
+                <DataGridTextColumn Header="Дебет" Width="90" Binding="{Binding Debit}"/>
+                <DataGridTextColumn Header="Кредит" Width="90" Binding="{Binding Credit}"/>
+                <DataGridTextColumn Header="Актив" Width="90" Binding="{Binding ObAssets}"/>
+                <DataGridTextColumn Header="Пассив" Width="90" Binding="{Binding ObPassive}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</Window>
